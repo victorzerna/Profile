@@ -3,10 +3,9 @@ import ProfileOverview from './components/profile-overview';
 import FormOverview from './components/form-overview';
 import FollowOverview from './components/follow-overview';
 
-import API from './../../utils/api';
-
 import { View, AlertIOS } from 'react-native';
 import api from './../../utils/api';
+import HttpUser from './../../services/Users/http-users';
 //Componente de tipo clase
 class Profile extends Component {
 
@@ -51,6 +50,16 @@ class Profile extends Component {
         this.invokeApiProfile();
         console.log('profile.js');
 
+    }
+
+    async getUsers(){
+        const data = await HttpUser.getUsers();
+        console.log(data);
+    }
+
+    async getUserByToken(){
+        const data = await HttpUser.getUserByToken();
+        console.log(data);
     }
 
     async invokeApiProfile(){
